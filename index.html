@@ -8,138 +8,35 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="theme-color" content="#0c1220">
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-html{font-size:16px;-webkit-text-size-adjust:100%}
-body{font-family:-apple-system,'Segoe UI',Roboto,sans-serif;background:#0c1220;color:#e2e8f0;min-height:100dvh;-webkit-tap-highlight-color:transparent;overflow-x:hidden}
-input,button,select{font-family:inherit;font-size:14px}
-input[type="number"]::-webkit-inner-spin-button{-webkit-appearance:none}
-button{cursor:pointer}
-.app{max-width:540px;margin:0 auto;padding-bottom:80px}
-.top-bar{position:sticky;top:0;z-index:20;background:#0c1220;padding:14px 16px 10px;border-bottom:1px solid rgba(148,163,184,.08)}
-.logo{font-size:20px;font-weight:800;background:linear-gradient(135deg,#60a5fa,#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.sync{font-size:11px;margin-left:auto}
-.top-row{display:flex;align-items:center;gap:8px}
-.bnav{position:fixed;bottom:0;left:0;right:0;z-index:20;background:rgba(12,18,32,.97);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid rgba(148,163,184,.08);display:flex;justify-content:center;padding:4px 0 max(4px,env(safe-area-inset-bottom))}
-.bnav-in{display:flex;max-width:540px;width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
-.bnav-in::-webkit-scrollbar{display:none}
-.nb{flex:0 0 auto;width:11.11%;display:flex;flex-direction:column;align-items:center;gap:1px;background:none;border:none;color:#475569;font-size:8px;font-weight:500;padding:4px 1px;min-width:0}
-.nb .ico{font-size:16px;line-height:1}
-.nb.on{color:#f8fafc}
-.page{display:none;flex-direction:column;gap:10px;padding:10px 16px}
-.page.show{display:flex}
-.trow{display:flex;gap:6px;flex-wrap:wrap}
-.tb{flex:1;padding:9px 8px;background:rgba(22,32,50,.8);border:1px solid rgba(148,163,184,.1);border-radius:10px;color:#64748b;font-size:12px;font-weight:500;text-align:center;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.tb.on{background:rgba(96,165,250,.12);border-color:rgba(96,165,250,.3);color:#f8fafc}
-.inp{width:100%;padding:10px 12px;background:rgba(12,18,32,.7);border:1px solid rgba(148,163,184,.1);border-radius:10px;color:#f8fafc;font-size:14px;outline:none}
-.inp:focus{border-color:rgba(96,165,250,.4)}
-.inp-m{padding-left:30px}
-.mw{position:relative;flex:1}
-.mw .sy{position:absolute;left:10px;top:50%;transform:translateY(-50%);color:#475569;font-size:13px;font-weight:600;pointer-events:none}
-.row{display:flex;gap:8px;align-items:center}
-.ba{padding:10px 16px;background:linear-gradient(135deg,#3b82f6,#6366f1);border:none;border-radius:10px;color:#fff;font-size:16px;font-weight:700;flex-shrink:0}
-.mos{display:flex;gap:4px;overflow-x:auto;padding-bottom:2px;-webkit-overflow-scrolling:touch}
-.mos::-webkit-scrollbar{display:none}
-.mb{padding:6px 10px;background:rgba(22,32,50,.5);border:1px solid rgba(148,163,184,.08);border-radius:8px;color:#64748b;font-size:11px;font-weight:500;white-space:nowrap}
-.mb.on{background:rgba(96,165,250,.12);border-color:rgba(96,165,250,.3);color:#f8fafc}
-.cd{padding:12px;background:rgba(22,32,50,.5);border-radius:12px;border:1px solid rgba(148,163,184,.06)}
-.its{display:flex;flex-direction:column;gap:3px}
-.ir{display:flex;align-items:center;gap:8px;padding:9px 10px;background:rgba(22,32,50,.4);border-radius:10px}
-.ir .nm{flex:1;font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.ir .vl{font-size:13px;font-weight:600;white-space:nowrap}
-.ir .dt{font-size:10px;opacity:.35;margin-left:4px}
-.ck{background:none;border:none;font-size:17px;color:#64748b;padding:0;flex-shrink:0}
-.xb{background:none;border:none;color:#ef4444;font-size:12px;opacity:.5;flex-shrink:0;padding:2px 4px}
-.empty{text-align:center;padding:24px 12px;color:#334155;font-size:13px}
-.cbl{background:rgba(22,32,50,.5);border-radius:12px;border:1px solid rgba(148,163,184,.06);overflow:hidden}
-.ch{display:flex;justify-content:space-between;align-items:center;padding:11px 12px;background:none;border:none;color:#e2e8f0;font-size:13px;font-weight:600;width:100%;text-align:left}
-.ch .inf{font-size:11px;opacity:.5}
-.ci{display:flex;flex-wrap:wrap;gap:5px;padding:0 10px 10px}
-.cp{display:inline-flex;align-items:center;gap:4px;padding:6px 10px;background:rgba(12,18,32,.6);border:1px solid rgba(148,163,184,.1);border-radius:18px;color:#94a3b8;font-size:12px}
-.cp.on{background:rgba(34,197,94,.15);border-color:rgba(34,197,94,.4);color:#4ade80}
-.cdl{background:none;border:none;color:#ef4444;font-size:10px;padding:1px 4px;opacity:.5}
-.bg{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.bc{padding:12px;background:rgba(22,32,50,.6);border:1px solid rgba(148,163,184,.08);border-radius:12px;display:flex;flex-direction:column;gap:8px}
-.bc.pd{border-color:rgba(34,197,94,.25);background:rgba(34,197,94,.04)}
-.bt{display:flex;align-items:center;gap:6px}
-.bt .lb{font-weight:600;font-size:13px}
-.bt .ico{font-size:20px}
-.pb{border:none;border-radius:8px;color:#fff;font-size:11px;font-weight:600;padding:5px 0;text-align:center}
-.tbar{display:flex;justify-content:space-between;align-items:center;padding:12px 14px;background:rgba(96,165,250,.08);border:1px solid rgba(96,165,250,.15);border-radius:12px}
-.tbar .l{font-size:12px;opacity:.6}
-.tbar .v{font-size:20px;font-weight:700;color:#60a5fa}
-.pi{display:flex;align-items:center;gap:8px;font-size:12px;color:#64748b}
-.pbg{flex:1;height:4px;background:rgba(148,163,184,.1);border-radius:2px;overflow:hidden}
-.pf{height:100%;border-radius:2px;transition:width .3s}
-.sph{display:flex;align-items:center;gap:10px;padding:12px;background:rgba(22,32,50,.5);border-radius:12px;border:1px solid rgba(148,163,184,.06)}
-.sph h2{font-size:15px}
-.sph p{font-size:11px;opacity:.5}
-.spt{margin-left:auto;font-size:18px;font-weight:700;color:#f59e0b}
-.cs{display:flex;gap:6px}
-.cst{flex:1;display:flex;flex-direction:column;gap:2px;padding:10px;text-align:center;background:rgba(22,32,50,.6);border-radius:10px;border:1px solid rgba(148,163,184,.06)}
-.cst .l{font-size:10px;opacity:.5}
-.cst .v{font-size:16px;font-weight:700}
-.nbt{padding:10px;background:rgba(96,165,250,.1);border:1px dashed rgba(96,165,250,.3);border-radius:10px;color:#60a5fa;font-size:13px;font-weight:500}
-.fc{padding:12px;background:rgba(22,32,50,.8);border-radius:12px;border:1px solid rgba(148,163,184,.1);display:flex;flex-direction:column;gap:8px}
-.pc{padding:12px;background:rgba(22,32,50,.4);border-radius:10px;border:1px solid rgba(148,163,184,.06)}
-.ppb{height:4px;background:rgba(148,163,184,.08);border-radius:2px;margin-top:6px;overflow:hidden}
-.ppf{height:100%;background:linear-gradient(90deg,#3b82f6,#60a5fa);border-radius:2px;transition:width .3s}
-.sv{text-align:right;padding:2px 16px;font-size:10px;color:#22c55e;min-height:14px}
-.ld{min-height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px}
-.ld .sp{font-size:28px;animation:spin 1.5s infinite linear}
-@keyframes spin{to{transform:rotate(360deg)}}
-.clr{padding:9px;background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.2);border-radius:10px;color:#f87171;font-size:12px;font-weight:500}
-.rc{padding:14px;border-radius:12px;border:1px solid rgba(148,163,184,.06)}
-.rc.pos{background:rgba(34,197,94,.08);border-color:rgba(34,197,94,.2)}
-.rc.neg{background:rgba(239,68,68,.08);border-color:rgba(239,68,68,.2)}
-.rc .rl{font-size:11px;opacity:.6;margin-bottom:4px}
-.rc .rv{font-size:24px;font-weight:800}
-.rd{font-size:12px;color:#64748b;padding:6px 0;border-bottom:1px solid rgba(148,163,184,.06);display:flex;justify-content:space-between}
-.upload-area{border:2px dashed rgba(96,165,250,.3);border-radius:14px;padding:30px 20px;text-align:center;color:#64748b;cursor:pointer}
-.upload-area:hover{border-color:#60a5fa;background:rgba(96,165,250,.05)}
-.upload-area .big{font-size:36px;margin-bottom:8px}
-.upload-area input{display:none}
-.upload-status{padding:12px;border-radius:10px;font-size:13px;text-align:center}
-.tag{display:inline-block;padding:2px 8px;border-radius:6px;font-size:10px;font-weight:600}
-.tag-in{background:rgba(34,197,94,.15);color:#4ade80}
-.tag-out{background:rgba(239,68,68,.1);color:#f87171}
-.tag-pay{background:rgba(245,158,11,.1);color:#f59e0b}
-.tag-sal{background:rgba(96,165,250,.15);color:#60a5fa}
-/* Dashboard */
-.dash-hero{padding:20px 16px;border-radius:14px;text-align:center;position:relative;overflow:hidden}
-.dash-hero.pos{background:linear-gradient(135deg,rgba(34,197,94,.12),rgba(34,197,94,.04))}
-.dash-hero.neg{background:linear-gradient(135deg,rgba(239,68,68,.12),rgba(239,68,68,.04))}
-.dash-hero .lbl{font-size:12px;opacity:.5;margin-bottom:4px}
-.dash-hero .big{font-size:32px;font-weight:800}
-.dash-hero .sub{font-size:12px;opacity:.6;margin-top:6px}
-.dash-row{display:flex;gap:8px}
-.dash-box{flex:1;padding:12px;background:rgba(22,32,50,.6);border-radius:12px;border:1px solid rgba(148,163,184,.06);text-align:center}
-.dash-box .l{font-size:10px;opacity:.5;margin-bottom:3px}
-.dash-box .v{font-size:18px;font-weight:700}
-.bar-row{display:flex;align-items:center;gap:8px;padding:8px 0}
-.bar-label{font-size:12px;width:90px;text-align:right;flex-shrink:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.bar-bg{flex:1;height:20px;background:rgba(148,163,184,.06);border-radius:6px;overflow:hidden;position:relative}
-.bar-fill{height:100%;border-radius:6px;transition:width .4s;min-width:2px}
-.bar-val{font-size:11px;font-weight:600;width:70px;text-align:right;flex-shrink:0}
-.dash-section{margin-top:4px}
-.dash-section .title{font-size:12px;opacity:.5;margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px}
+*{margin:0;padding:0;box-sizing:border-box}html{font-size:16px;-webkit-text-size-adjust:100%}body{font-family:-apple-system,'Segoe UI',Roboto,sans-serif;background:#0c1220;color:#e2e8f0;min-height:100dvh;-webkit-tap-highlight-color:transparent;overflow-x:hidden}input,button,select{font-family:inherit;font-size:14px}input[type="number"]::-webkit-inner-spin-button{-webkit-appearance:none}button{cursor:pointer}
+.app{max-width:540px;margin:0 auto;padding-bottom:80px}.top-bar{position:sticky;top:0;z-index:20;background:#0c1220;padding:14px 16px 10px;border-bottom:1px solid rgba(148,163,184,.08)}.logo{font-size:20px;font-weight:800;background:linear-gradient(135deg,#60a5fa,#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent}.sync{font-size:11px;margin-left:auto}.top-row{display:flex;align-items:center;gap:8px}
+.bnav{position:fixed;bottom:0;left:0;right:0;z-index:20;background:rgba(12,18,32,.97);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid rgba(148,163,184,.08);display:flex;justify-content:center;padding:4px 0 max(4px,env(safe-area-inset-bottom))}.bnav-in{display:flex;max-width:540px;width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}.bnav-in::-webkit-scrollbar{display:none}.nb{flex:0 0 auto;width:10%;display:flex;flex-direction:column;align-items:center;gap:1px;background:none;border:none;color:#475569;font-size:8px;font-weight:500;padding:4px 1px;min-width:0}.nb .ico{font-size:16px;line-height:1}.nb.on{color:#f8fafc}
+.page{display:none;flex-direction:column;gap:10px;padding:10px 16px}.page.show{display:flex}.trow{display:flex;gap:6px;flex-wrap:wrap}.tb{flex:1;padding:9px 8px;background:rgba(22,32,50,.8);border:1px solid rgba(148,163,184,.1);border-radius:10px;color:#64748b;font-size:12px;font-weight:500;text-align:center;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.tb.on{background:rgba(96,165,250,.12);border-color:rgba(96,165,250,.3);color:#f8fafc}
+.inp{width:100%;padding:10px 12px;background:rgba(12,18,32,.7);border:1px solid rgba(148,163,184,.1);border-radius:10px;color:#f8fafc;font-size:14px;outline:none}.inp:focus{border-color:rgba(96,165,250,.4)}.inp-m{padding-left:30px}.mw{position:relative;flex:1}.mw .sy{position:absolute;left:10px;top:50%;transform:translateY(-50%);color:#475569;font-size:13px;font-weight:600;pointer-events:none}.row{display:flex;gap:8px;align-items:center}.ba{padding:10px 16px;background:linear-gradient(135deg,#3b82f6,#6366f1);border:none;border-radius:10px;color:#fff;font-size:16px;font-weight:700;flex-shrink:0}
+.mos{display:flex;gap:4px;overflow-x:auto;padding-bottom:2px;-webkit-overflow-scrolling:touch}.mos::-webkit-scrollbar{display:none}.mb{padding:6px 10px;background:rgba(22,32,50,.5);border:1px solid rgba(148,163,184,.08);border-radius:8px;color:#64748b;font-size:11px;font-weight:500;white-space:nowrap}.mb.on{background:rgba(96,165,250,.12);border-color:rgba(96,165,250,.3);color:#f8fafc}
+.cd{padding:12px;background:rgba(22,32,50,.5);border-radius:12px;border:1px solid rgba(148,163,184,.06)}.its{display:flex;flex-direction:column;gap:3px}.ir{display:flex;align-items:center;gap:8px;padding:9px 10px;background:rgba(22,32,50,.4);border-radius:10px}.ir .nm{flex:1;font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.ir .vl{font-size:13px;font-weight:600;white-space:nowrap}.ir .dt{font-size:10px;opacity:.35;margin-left:4px}.ck{background:none;border:none;font-size:17px;color:#64748b;padding:0;flex-shrink:0}.xb{background:none;border:none;color:#ef4444;font-size:12px;opacity:.5;flex-shrink:0;padding:2px 4px}.empty{text-align:center;padding:24px 12px;color:#334155;font-size:13px}
+.cbl{background:rgba(22,32,50,.5);border-radius:12px;border:1px solid rgba(148,163,184,.06);overflow:hidden}.ch{display:flex;justify-content:space-between;align-items:center;padding:11px 12px;background:none;border:none;color:#e2e8f0;font-size:13px;font-weight:600;width:100%;text-align:left}.ch .inf{font-size:11px;opacity:.5}.ci{display:flex;flex-wrap:wrap;gap:5px;padding:0 10px 10px}.cp{display:inline-flex;align-items:center;gap:4px;padding:6px 10px;background:rgba(12,18,32,.6);border:1px solid rgba(148,163,184,.1);border-radius:18px;color:#94a3b8;font-size:12px}.cp.on{background:rgba(34,197,94,.15);border-color:rgba(34,197,94,.4);color:#4ade80}.cdl{background:none;border:none;color:#ef4444;font-size:10px;padding:1px 4px;opacity:.5}
+.bg{display:grid;grid-template-columns:1fr 1fr;gap:8px}.bc{padding:12px;background:rgba(22,32,50,.6);border:1px solid rgba(148,163,184,.08);border-radius:12px;display:flex;flex-direction:column;gap:8px}.bc.pd{border-color:rgba(34,197,94,.25);background:rgba(34,197,94,.04)}.bt{display:flex;align-items:center;gap:6px}.bt .lb{font-weight:600;font-size:13px}.bt .ico{font-size:20px}.pb{border:none;border-radius:8px;color:#fff;font-size:11px;font-weight:600;padding:5px 0;text-align:center}
+.tbar{display:flex;justify-content:space-between;align-items:center;padding:12px 14px;background:rgba(96,165,250,.08);border:1px solid rgba(96,165,250,.15);border-radius:12px}.tbar .l{font-size:12px;opacity:.6}.tbar .v{font-size:20px;font-weight:700;color:#60a5fa}.pi{display:flex;align-items:center;gap:8px;font-size:12px;color:#64748b}.pbg{flex:1;height:4px;background:rgba(148,163,184,.1);border-radius:2px;overflow:hidden}.pf{height:100%;border-radius:2px;transition:width .3s}
+.sph{display:flex;align-items:center;gap:10px;padding:12px;background:rgba(22,32,50,.5);border-radius:12px;border:1px solid rgba(148,163,184,.06)}.sph h2{font-size:15px}.sph p{font-size:11px;opacity:.5}.spt{margin-left:auto;font-size:18px;font-weight:700;color:#f59e0b}.cs{display:flex;gap:6px}.cst{flex:1;display:flex;flex-direction:column;gap:2px;padding:10px;text-align:center;background:rgba(22,32,50,.6);border-radius:10px;border:1px solid rgba(148,163,184,.06)}.cst .l{font-size:10px;opacity:.5}.cst .v{font-size:16px;font-weight:700}
+.nbt{padding:10px;background:rgba(96,165,250,.1);border:1px dashed rgba(96,165,250,.3);border-radius:10px;color:#60a5fa;font-size:13px;font-weight:500}.fc{padding:12px;background:rgba(22,32,50,.8);border-radius:12px;border:1px solid rgba(148,163,184,.1);display:flex;flex-direction:column;gap:8px}.pc{padding:12px;background:rgba(22,32,50,.4);border-radius:10px;border:1px solid rgba(148,163,184,.06)}.ppb{height:4px;background:rgba(148,163,184,.08);border-radius:2px;margin-top:6px;overflow:hidden}.ppf{height:100%;background:linear-gradient(90deg,#3b82f6,#60a5fa);border-radius:2px;transition:width .3s}
+.sv{text-align:right;padding:2px 16px;font-size:10px;color:#22c55e;min-height:14px}.ld{min-height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px}.ld .sp{font-size:28px;animation:spin 1.5s infinite linear}@keyframes spin{to{transform:rotate(360deg)}}.clr{padding:9px;background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.2);border-radius:10px;color:#f87171;font-size:12px;font-weight:500}
+.rc{padding:14px;border-radius:12px;border:1px solid rgba(148,163,184,.06)}.rc.pos{background:rgba(34,197,94,.08);border-color:rgba(34,197,94,.2)}.rc.neg{background:rgba(239,68,68,.08);border-color:rgba(239,68,68,.2)}.rc .rl{font-size:11px;opacity:.6;margin-bottom:4px}.rc .rv{font-size:24px;font-weight:800}.rd{font-size:12px;color:#64748b;padding:6px 0;border-bottom:1px solid rgba(148,163,184,.06);display:flex;justify-content:space-between}
+.upload-area{border:2px dashed rgba(96,165,250,.3);border-radius:14px;padding:30px 20px;text-align:center;color:#64748b;cursor:pointer}.upload-area:hover{border-color:#60a5fa;background:rgba(96,165,250,.05)}.upload-area .big{font-size:36px;margin-bottom:8px}.upload-area input{display:none}.upload-status{padding:12px;border-radius:10px;font-size:13px;text-align:center}
+.tag{display:inline-block;padding:2px 8px;border-radius:6px;font-size:10px;font-weight:600}.tag-in{background:rgba(34,197,94,.15);color:#4ade80}.tag-out{background:rgba(239,68,68,.1);color:#f87171}.tag-pay{background:rgba(245,158,11,.1);color:#f59e0b}.tag-sal{background:rgba(96,165,250,.15);color:#60a5fa}
+.dash-hero{padding:20px 16px;border-radius:14px;text-align:center}.dash-hero.pos{background:linear-gradient(135deg,rgba(34,197,94,.12),rgba(34,197,94,.04))}.dash-hero.neg{background:linear-gradient(135deg,rgba(239,68,68,.12),rgba(239,68,68,.04))}.dash-hero .lbl{font-size:12px;opacity:.5;margin-bottom:4px}.dash-hero .big{font-size:32px;font-weight:800}.dash-hero .sub{font-size:12px;opacity:.6;margin-top:6px}
+.dash-row{display:flex;gap:8px}.dash-box{flex:1;padding:12px;background:rgba(22,32,50,.6);border-radius:12px;border:1px solid rgba(148,163,184,.06);text-align:center}.dash-box .l{font-size:10px;opacity:.5;margin-bottom:3px}.dash-box .v{font-size:18px;font-weight:700}
+.bar-row{display:flex;align-items:center;gap:8px;padding:6px 0}.bar-label{font-size:11px;width:80px;text-align:right;flex-shrink:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.bar-bg{flex:1;height:18px;background:rgba(148,163,184,.06);border-radius:6px;overflow:hidden}.bar-fill{height:100%;border-radius:6px;transition:width .4s;min-width:2px}.bar-val{font-size:11px;font-weight:600;width:65px;text-align:right;flex-shrink:0}
+.dash-section{margin-top:4px}.dash-section .title{font-size:12px;opacity:.5;margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px}
 </style>
 </head>
 <body>
 <div id="ld" class="ld"><div class="sp">💰</div><div style="color:#475569;font-size:13px">Conectando...</div></div>
 <div id="app" class="app" style="display:none">
-  <div class="top-bar"><div class="top-row"><h1 class="logo">Controle de Gastos</h1><span id="sync" class="sync" style="color:#f59e0b">🔄</span></div></div>
-  <div class="sv" id="svb"></div>
-  <div id="pg_dash" class="page show"></div>
-  <div id="pg_mercado" class="page"></div>
-  <div id="pg_financas" class="page"></div>
-  <div id="pg_viagem" class="page"></div>
-  <div id="pg_cartao" class="page"></div>
-  <div id="pg_emprestimos" class="page"></div>
-  <div id="pg_aresta" class="page"></div>
-  <div id="pg_pix" class="page"></div>
-  <div id="pg_extrato" class="page"></div>
-  <div id="pg_receita" class="page"></div>
-  <nav class="bnav"><div class="bnav-in" id="ni"></div></nav>
+<div class="top-bar"><div class="top-row"><h1 class="logo">Controle de Gastos</h1><span id="sync" class="sync" style="color:#f59e0b">🔄</span></div></div>
+<div class="sv" id="svb"></div>
+<div id="pg_dash" class="page show"></div><div id="pg_mercado" class="page"></div><div id="pg_financas" class="page"></div><div id="pg_viagem" class="page"></div><div id="pg_cartao" class="page"></div><div id="pg_emprestimos" class="page"></div><div id="pg_aresta" class="page"></div><div id="pg_pix" class="page"></div><div id="pg_extrato" class="page"></div><div id="pg_receita" class="page"></div>
+<nav class="bnav"><div class="bnav-in" id="ni"></div></nav>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
@@ -163,207 +60,164 @@ const CATS=[
 ];
 const BLS=[{id:"aluguel",label:"Aluguel",icon:"🏠"},{id:"luz",label:"Luz",icon:"💡"},{id:"condominio",label:"Condomínio",icon:"🏢"},{id:"internet",label:"Internet",icon:"🌐"}];
 const VCS=[{id:"passagens",label:"Passagens",icon:"🎫"},{id:"uber",label:"Uber",icon:"🚗"},{id:"adicionais",label:"Adicionais",icon:"📦"}];
-const TABS=[
-{id:"dash",lb:"Painel",ico:"📊"},{id:"mercado",lb:"Mercado",ico:"🛒"},{id:"financas",lb:"Finanças",ico:"💰"},
-{id:"viagem",lb:"SP",ico:"✈️"},{id:"cartao",lb:"Cartão",ico:"💳"},{id:"emprestimos",lb:"Emprest.",ico:"🏦"},
-{id:"aresta",lb:"Aresta",ico:"🏢"},{id:"pix",lb:"PIX",ico:"📲"},{id:"extrato",lb:"Extrato",ico:"📄"},{id:"receita",lb:"Receita",ico:"📋"},
-];
+const TABS=[{id:"dash",lb:"Painel",ico:"📊"},{id:"mercado",lb:"Mercado",ico:"🛒"},{id:"financas",lb:"Finanças",ico:"💰"},{id:"viagem",lb:"SP",ico:"✈️"},{id:"cartao",lb:"Cartão",ico:"💳"},{id:"emprestimos",lb:"Emprest.",ico:"🏦"},{id:"aresta",lb:"Aresta",ico:"🏢"},{id:"pix",lb:"PIX",ico:"📲"},{id:"extrato",lb:"Extrato",ico:"📄"},{id:"receita",lb:"Receita",ico:"📋"}];
 const DEF={mercado:{lista:[],custom:[]},financas:{},viagem:{},cartao:[],emprestimos:[],aresta:{},pix:{},extrato:{},receita:{}};
 let D={...DEF},dbRef=null,curTab="dash";
 const ni=document.getElementById("ni");
 TABS.forEach(t=>{const b=document.createElement("button");b.className="nb"+(t.id==="dash"?" on":"");b.innerHTML=`<span class="ico">${t.ico}</span>${t.lb}`;b.onclick=()=>{curTab=t.id;ni.querySelectorAll(".nb").forEach(x=>x.classList.remove("on"));b.classList.add("on");document.querySelectorAll(".page").forEach(p=>p.classList.remove("show"));document.getElementById("pg_"+t.id).classList.add("show");render()};ni.appendChild(b)});
 function initFB(){try{firebase.initializeApp(FBC);dbRef=firebase.database().ref("controle-gastos");dbRef.on("value",s=>{const v=s.val();if(v){D={...DEF,...v};["lista","custom"].forEach(k=>{if(!Array.isArray(D.mercado[k]))D.mercado[k]=[]});["cartao","emprestimos"].forEach(k=>{if(!Array.isArray(D[k]))D[k]=[]});}document.getElementById("ld").style.display="none";document.getElementById("app").style.display="block";render();document.getElementById("sync").innerHTML="🟢";document.getElementById("sync").style.color="#22c55e"})}catch(e){document.getElementById("ld").innerHTML=`<div style="color:#ef4444;padding:20px">Erro: ${e.message}</div>`}}
 function sv(){if(dbRef){dbRef.set(D);const b=document.getElementById("svb");b.textContent="● Salvo";setTimeout(()=>b.textContent="",600)}}
-
-// ══════════ HELPERS pra calcular gastos ══════════
-function getGastos(moKey){
-  const g={};let total=0;
-  // Finanças
-  const fin=D.financas&&D.financas[moKey]||{};let fT=0;BLS.forEach(b=>{fT+=parseFloat(fin[b.id])||0});if(fT){g["🏠 Casa (contas)"]=fT;total+=fT}
-  // Cartão
-  const cT=gCM(moKey).reduce((s,i)=>s+i.valorParcela,0);if(cT){g["💳 Cartão"]=cT;total+=cT}
-  // Empréstimos
-  const eT=gEM(moKey).reduce((s,i)=>s+i.valorParcela,0);if(eT){g["🏦 Empréstimos"]=eT;total+=eT}
-  // Viagem
-  let vT=0;if(D.viagem&&D.viagem[moKey]&&typeof D.viagem[moKey]==="object")VCS.forEach(c=>{(D.viagem[moKey][c.id]||[]).forEach(i=>vT+=i.valor||0)});if(vT){g["✈️ São Paulo"]=vT;total+=vT}
-  // Aresta
-  const aT=(D.aresta&&D.aresta[moKey]?D.aresta[moKey].items||[]:[]).reduce((s,i)=>s+(i.valor||0),0);if(aT){g["🏢 Aresta"]=aT;total+=aT}
-  // PIX enviados
-  const pOut=(D.pix&&D.pix[moKey]?D.pix[moKey].items||[]:[]).filter(i=>i.valor<0).reduce((s,i)=>s+Math.abs(i.valor),0);if(pOut){g["📲 PIX enviados"]=pOut;total+=pOut}
-  // Receita extras
-  const ext=(D.receita&&D.receita[moKey]?D.receita[moKey].extras||[]:[]).reduce((s,i)=>s+(i.valor||0),0);if(ext){g["📝 Outros gastos"]=ext;total+=ext}
-  return{items:g,total};
-}
-function getReceita(moKey){return parseFloat(D.receita&&D.receita[moKey]?D.receita[moKey].receita:0)||0}
-
-// ══════════ DASHBOARD ══════════
+function getGastos(mo){const g={};let t=0;const fin=D.financas&&D.financas[mo]||{};let fT=0;BLS.forEach(b=>{fT+=parseFloat(fin[b.id])||0});if(fT){g["🏠 Casa"]=fT;t+=fT}const cT=gCM(mo).reduce((s,i)=>s+i.valorParcela,0);if(cT){g["💳 Cartão"]=cT;t+=cT}const eT=gEM(mo).reduce((s,i)=>s+i.valorParcela,0);if(eT){g["🏦 Empréstimos"]=eT;t+=eT}let vT=0;if(D.viagem&&D.viagem[mo]&&typeof D.viagem[mo]==="object")VCS.forEach(c=>{(D.viagem[mo][c.id]||[]).forEach(i=>vT+=i.valor||0)});if(vT){g["✈️ SP"]=vT;t+=vT}const aT=(D.aresta&&D.aresta[mo]?D.aresta[mo].items||[]:[]).reduce((s,i)=>s+(i.valor||0),0);if(aT){g["🏢 Aresta"]=aT;t+=aT}const pO=(D.pix&&D.pix[mo]?D.pix[mo].items||[]:[]).filter(i=>i.valor<0).reduce((s,i)=>s+Math.abs(i.valor),0);if(pO){g["📲 PIX env."]=pO;t+=pO}const ext=(D.receita&&D.receita[mo]?D.receita[mo].extras||[]:[]).reduce((s,i)=>s+(i.valor||0),0);if(ext){g["📝 Outros"]=ext;t+=ext}return{items:g,total:t}}
+function getRec(mo){return parseFloat(D.receita&&D.receita[mo]?D.receita[mo].receita:0)||0}
+// ══ DASHBOARD ══
 let dashMo=CMK;
-function rDash(){
-  const e=document.getElementById("pg_dash");let h="";
-  h+=`<div class="mos">`;mO().forEach(m=>{h+=`<button class="mb ${dashMo===m.key?"on":""}" onclick="dashMo='${m.key}';render()">${m.label}</button>`});h+=`</div>`;
-  const rec=getReceita(dashMo);
-  const{items:gastos,total:totalG}=getGastos(dashMo);
-  const saldo=rec-totalG;
-  const colors=["#3b82f6","#f59e0b","#ef4444","#a78bfa","#22c55e","#ec4899","#06b6d4","#f97316"];
-
-  // Hero
-  h+=`<div class="dash-hero ${saldo>=0?"pos":"neg"}">
-    <div class="lbl">SALDO DO MÊS</div>
-    <div class="big" style="color:${saldo>=0?"#22c55e":"#ef4444"}">R$ ${saldo.toFixed(2)}</div>
-    <div class="sub">${rec>0?`Receita R$${rec.toFixed(2)} − Gastos R$${totalG.toFixed(2)}`:"Cadastre sua receita na aba Receita"}</div>
-  </div>`;
-
-  // Summary boxes
-  h+=`<div class="dash-row">
-    <div class="dash-box"><div class="l">💵 RECEITA</div><div class="v" style="color:#22c55e">R$${rec.toFixed(0)}</div></div>
-    <div class="dash-box"><div class="l">💸 GASTOS</div><div class="v" style="color:#ef4444">R$${totalG.toFixed(0)}</div></div>
-    <div class="dash-box"><div class="l">💰 SOBRA</div><div class="v" style="color:${saldo>=0?"#22c55e":"#ef4444"}">R$${saldo.toFixed(0)}</div></div>
-  </div>`;
-
-  // Bar chart
-  const entries=Object.entries(gastos).sort((a,b)=>b[1]-a[1]);
-  if(entries.length){
-    const maxVal=Math.max(...entries.map(e=>e[1]));
-    h+=`<div class="cd"><div class="dash-section"><div class="title">📊 Gastos por Categoria</div>`;
-    entries.forEach(([label,val],idx)=>{
-      const pct=maxVal>0?(val/maxVal)*100:0;
-      const color=colors[idx%colors.length];
-      const pctTotal=totalG>0?((val/totalG)*100).toFixed(0):0;
-      h+=`<div class="bar-row">
-        <div class="bar-label">${label.replace(/^.+\s/,"")}</div>
-        <div class="bar-bg"><div class="bar-fill" style="width:${pct}%;background:${color}"></div></div>
-        <div class="bar-val" style="color:${color}">R$${val.toFixed(0)} <span style="opacity:.5;font-size:10px">${pctTotal}%</span></div>
-      </div>`;
-    });
-    h+=`</div></div>`;
-  }
-
-  // Detalhamento finanças
-  const fin=D.financas&&D.financas[dashMo]||{};
-  const finItems=BLS.filter(b=>parseFloat(fin[b.id]));
-  if(finItems.length){
-    h+=`<div class="cd"><div class="dash-section"><div class="title">🏠 Contas da Casa</div><div class="its">`;
-    finItems.forEach(b=>{
-      const v=parseFloat(fin[b.id])||0;
-      const paid=fin[b.id+"_p"];
-      h+=`<div class="ir"><span style="font-size:16px">${b.icon}</span><span class="nm">${b.label}</span>
-        <span class="tag ${paid?"tag-in":"tag-out"}">${paid?"pago":"pendente"}</span>
-        <span class="vl" style="color:#f59e0b">R$${v.toFixed(2)}</span></div>`;
-    });
-    h+=`</div></div></div>`;
-  }
-
-  // Cartão parcelas do mês
-  const cartM=gCM(dashMo);
-  if(cartM.length){
-    h+=`<div class="cd"><div class="dash-section"><div class="title">💳 Parcelas do Cartão</div><div class="its">`;
-    cartM.forEach(i=>{h+=`<div class="ir"><span class="nm">${i.desc}</span><span style="font-size:11px;color:#64748b">${i.pa}/${i.parcelas}</span><span class="vl" style="color:#f59e0b">R$${i.valorParcela.toFixed(2)}</span></div>`});
-    h+=`</div></div></div>`;
-  }
-
-  // Empréstimos do mês
-  const empM=gEM(dashMo);
-  if(empM.length){
-    h+=`<div class="cd"><div class="dash-section"><div class="title">🏦 Empréstimos</div><div class="its">`;
-    empM.forEach(i=>{h+=`<div class="ir"><span class="nm">${i.desc}</span><span style="font-size:11px;color:#64748b">${i.pa}/${i.parcelas}</span><span class="vl" style="color:#f59e0b">R$${i.valorParcela.toFixed(2)}</span></div>`});
-    h+=`</div></div></div>`;
-  }
-
-  // Viagem
-  let vItems=[];if(D.viagem&&D.viagem[dashMo]&&typeof D.viagem[dashMo]==="object")VCS.forEach(c=>{(D.viagem[dashMo][c.id]||[]).forEach(i=>vItems.push({...i,cat:c.label}))});
-  if(vItems.length){
-    h+=`<div class="cd"><div class="dash-section"><div class="title">✈️ São Paulo</div><div class="its">`;
-    vItems.forEach(i=>{h+=`<div class="ir"><span class="nm">${i.desc} <span class="dt">${i.cat}</span></span><span class="vl" style="color:#f59e0b">R$${(i.valor||0).toFixed(2)}</span></div>`});
-    h+=`</div></div></div>`;
-  }
-
-  // Aresta
-  const areItems=(D.aresta&&D.aresta[dashMo]?D.aresta[dashMo].items||[]:[]);
-  if(areItems.length){
-    h+=`<div class="cd"><div class="dash-section"><div class="title">🏢 Aresta</div><div class="its">`;
-    areItems.forEach(i=>{h+=`<div class="ir"><span class="nm">${i.desc}</span><span class="vl" style="color:#f59e0b">R$${(i.valor||0).toFixed(2)}</span></div>`});
-    h+=`</div></div></div>`;
-  }
-
-  // PIX resumo
-  const pixItems=(D.pix&&D.pix[dashMo]?D.pix[dashMo].items||[]:[]);
-  if(pixItems.length){
-    const pIn=pixItems.filter(i=>i.valor>0).reduce((s,i)=>s+i.valor,0);
-    const pOut=pixItems.filter(i=>i.valor<0).reduce((s,i)=>s+Math.abs(i.valor),0);
-    h+=`<div class="cd"><div class="dash-section"><div class="title">📲 PIX (${pixItems.length} transações)</div>
-      <div class="dash-row" style="margin-bottom:8px"><div class="dash-box"><div class="l">RECEBIDO</div><div class="v" style="color:#4ade80;font-size:14px">+R$${pIn.toFixed(0)}</div></div><div class="dash-box"><div class="l">ENVIADO</div><div class="v" style="color:#f87171;font-size:14px">-R$${pOut.toFixed(0)}</div></div></div>
-    </div></div>`;
-  }
-
-  if(!entries.length && !finItems.length && !cartM.length)h+=`<div class="empty">Nenhum dado neste mês ainda.<br>Comece adicionando nas outras abas!</div>`;
-
-  e.innerHTML=h;
-}
-
-// ══════════ MERCADO ══════════
+function rDash(){const e=document.getElementById("pg_dash");let h="";h+=`<div class="mos">`;mO().forEach(m=>{h+=`<button class="mb ${dashMo===m.key?"on":""}" onclick="dashMo='${m.key}';render()">${m.label}</button>`});h+=`</div>`;const rec=getRec(dashMo),{items:g,total:tG}=getGastos(dashMo),sal=rec-tG,colors=["#3b82f6","#f59e0b","#ef4444","#a78bfa","#22c55e","#ec4899","#06b6d4","#f97316"];h+=`<div class="dash-hero ${sal>=0?"pos":"neg"}"><div class="lbl">SALDO DO MÊS</div><div class="big" style="color:${sal>=0?"#22c55e":"#ef4444"}">R$ ${sal.toFixed(2)}</div><div class="sub">${rec>0?`Receita R$${rec.toFixed(2)} − Gastos R$${tG.toFixed(2)}`:"Cadastre receita na aba Receita"}</div></div>`;h+=`<div class="dash-row"><div class="dash-box"><div class="l">💵 RECEITA</div><div class="v" style="color:#22c55e">R$${rec.toFixed(0)}</div></div><div class="dash-box"><div class="l">💸 GASTOS</div><div class="v" style="color:#ef4444">R$${tG.toFixed(0)}</div></div><div class="dash-box"><div class="l">💰 SOBRA</div><div class="v" style="color:${sal>=0?"#22c55e":"#ef4444"}">R$${sal.toFixed(0)}</div></div></div>`;const en=Object.entries(g).sort((a,b)=>b[1]-a[1]);if(en.length){const mx=Math.max(...en.map(e=>e[1]));h+=`<div class="cd"><div class="dash-section"><div class="title">📊 Gastos por Categoria</div>`;en.forEach(([lb,vl],i)=>{const pct=mx>0?(vl/mx)*100:0,c=colors[i%colors.length],pt=tG>0?((vl/tG)*100).toFixed(0):0;h+=`<div class="bar-row"><div class="bar-label">${lb}</div><div class="bar-bg"><div class="bar-fill" style="width:${pct}%;background:${c}"></div></div><div class="bar-val" style="color:${c}">R$${vl.toFixed(0)} ${pt}%</div></div>`});h+=`</div></div>`}
+const fin=D.financas&&D.financas[dashMo]||{},fI=BLS.filter(b=>parseFloat(fin[b.id]));if(fI.length){h+=`<div class="cd"><div class="dash-section"><div class="title">🏠 Contas</div><div class="its">`;fI.forEach(b=>{const v=parseFloat(fin[b.id])||0,p=fin[b.id+"_p"];h+=`<div class="ir"><span style="font-size:16px">${b.icon}</span><span class="nm">${b.label}</span><span class="tag ${p?"tag-in":"tag-out"}">${p?"pago":"pend."}</span><span class="vl" style="color:#f59e0b">R$${v.toFixed(2)}</span></div>`});h+=`</div></div></div>`}
+const cM=gCM(dashMo);if(cM.length){h+=`<div class="cd"><div class="dash-section"><div class="title">💳 Cartão</div><div class="its">`;cM.forEach(i=>{h+=`<div class="ir"><span class="nm">${i.desc}</span><span style="font-size:11px;color:#64748b">${i.pa}/${i.parcelas}</span><span class="vl" style="color:#f59e0b">R$${i.valorParcela.toFixed(2)}</span></div>`});h+=`</div></div></div>`}
+const eM=gEM(dashMo);if(eM.length){h+=`<div class="cd"><div class="dash-section"><div class="title">🏦 Empréstimos</div><div class="its">`;eM.forEach(i=>{h+=`<div class="ir"><span class="nm">${i.desc}</span><span style="font-size:11px;color:#64748b">${i.pa}/${i.parcelas}</span><span class="vl" style="color:#f59e0b">R$${i.valorParcela.toFixed(2)}</span></div>`});h+=`</div></div></div>`}
+const pI=(D.pix&&D.pix[dashMo]?D.pix[dashMo].items||[]:[]);if(pI.length){const pIn=pI.filter(i=>i.valor>0).reduce((s,i)=>s+i.valor,0),pOt=pI.filter(i=>i.valor<0).reduce((s,i)=>s+Math.abs(i.valor),0);h+=`<div class="cd"><div class="dash-section"><div class="title">📲 PIX (${pI.length})</div><div class="dash-row"><div class="dash-box"><div class="l">RECEB.</div><div class="v" style="color:#4ade80;font-size:14px">+R$${pIn.toFixed(0)}</div></div><div class="dash-box"><div class="l">ENV.</div><div class="v" style="color:#f87171;font-size:14px">-R$${pOt.toFixed(0)}</div></div></div></div></div>`}
+if(!en.length&&!fI.length)h+=`<div class="empty">Nenhum dado neste mês.<br>Adicione nas outras abas!</div>`;e.innerHTML=h}
+// ══ MERCADO ══
 let mV="faltando",oC=null,mS="";
 function inL(n){return D.mercado.lista.some(i=>i.name.toLowerCase()===n.toLowerCase())}
 function tgL(n){if(inL(n))D.mercado.lista=D.mercado.lista.filter(i=>i.name.toLowerCase()!==n.toLowerCase());else D.mercado.lista.push({id:gid(),name:n,checked:false});sv();render()}
-function rM(){const e=document.getElementById("pg_mercado"),{lista=[],custom=[]}=D.mercado;let h="";h+=`<div class="trow"><button class="tb ${mV==="faltando"?"on":""}" onclick="mV='faltando';render()">📝 Faltando</button><button class="tb ${mV==="lista"?"on":""}" onclick="mV='lista';render()">🛒 Compras (${lista.length})</button></div>`;if(mV==="faltando"){h+=`<input class="inp" placeholder="🔍 Buscar..." value="${mS}" oninput="mS=this.value;render()">`;CATS.forEach(c=>{const it=mS?c.items.filter(i=>i.toLowerCase().includes(mS.toLowerCase())):c.items;if(mS&&!it.length)return;const on=it.filter(i=>inL(i)).length,op=oC===c.id||mS;h+=`<div class="cbl"><button class="ch" onclick="oC=oC==='${c.id}'?null:'${c.id}';render()"><span>${c.icon} ${c.label}</span><span class="inf">${on}/${it.length} ${op?"▲":"▼"}</span></button>`;if(op){h+=`<div class="ci">`;it.forEach(i=>{const o=inL(i),x=i.replace(/'/g,"\\'");h+=`<button class="cp ${o?"on":""}" onclick="tgL('${x}')">${o?"✓":"+"} ${i}</button>`});h+=`</div>`}h+=`</div>`});const fc=mS?custom.filter(c=>c.toLowerCase().includes(mS.toLowerCase())):custom;h+=`<div class="cbl"><div class="ch"><span>📌 Meus Itens (${custom.length})</span></div>`;if(fc.length){h+=`<div class="ci">`;fc.forEach(c=>{const o=inL(c),x=c.replace(/'/g,"\\'");h+=`<span style="display:inline-flex;align-items:center;gap:2px"><button class="cp ${o?"on":""}" onclick="tgL('${x}')">${o?"✓":"+"} ${c}</button><button class="cdl" onclick="rCu('${x}')">✕</button></span>`});h+=`</div>`}h+=`<div class="row" style="padding:6px 10px 10px"><input class="inp" id="ciI" placeholder="Adicionar item..." onkeydown="if(event.key==='Enter')aCu()"><button class="ba" onclick="aCu()">+</button></div></div>`}else{if(!lista.length)h+=`<div class="empty">Lista vazia!</div>`;else{const ck=lista.filter(i=>i.checked).length;h+=`<div class="pi">${ck}/${lista.length}<div class="pbg"><div class="pf" style="width:${(ck/lista.length)*100}%;background:linear-gradient(90deg,#3b82f6,#60a5fa)"></div></div></div><div class="its">`;lista.forEach(i=>{h+=`<div class="ir" style="opacity:${i.checked?.45:1}"><button class="ck" onclick="tCk('${i.id}')">${i.checked?"☑":"☐"}</button><span class="nm" style="text-decoration:${i.checked?"line-through":"none"}">${i.name}</span><button class="xb" onclick="tgL('${i.name.replace(/'/g,"\\'")}')">✕</button></div>`});h+=`</div>`;if(ck)h+=`<button class="clr" onclick="cCk()">Limpar ${ck}</button>`}}e.innerHTML=h}
+function rM(){const e=document.getElementById("pg_mercado"),{lista=[],custom=[]}=D.mercado;let h="";h+=`<div class="trow"><button class="tb ${mV==="faltando"?"on":""}" onclick="mV='faltando';render()">📝 Faltando</button><button class="tb ${mV==="lista"?"on":""}" onclick="mV='lista';render()">🛒 Compras (${lista.length})</button></div>`;if(mV==="faltando"){h+=`<input class="inp" placeholder="🔍 Buscar..." value="${mS}" oninput="mS=this.value;render()">`;CATS.forEach(c=>{const it=mS?c.items.filter(i=>i.toLowerCase().includes(mS.toLowerCase())):c.items;if(mS&&!it.length)return;const on=it.filter(i=>inL(i)).length,op=oC===c.id||mS;h+=`<div class="cbl"><button class="ch" onclick="oC=oC==='${c.id}'?null:'${c.id}';render()"><span>${c.icon} ${c.label}</span><span class="inf">${on}/${it.length} ${op?"▲":"▼"}</span></button>`;if(op){h+=`<div class="ci">`;it.forEach(i=>{const o=inL(i),x=i.replace(/'/g,"\\'");h+=`<button class="cp ${o?"on":""}" onclick="tgL('${x}')">${o?"✓":"+"} ${i}</button>`});h+=`</div>`}h+=`</div>`});const fc=mS?custom.filter(c=>c.toLowerCase().includes(mS.toLowerCase())):custom;h+=`<div class="cbl"><div class="ch"><span>📌 Meus Itens (${custom.length})</span></div>`;if(fc.length){h+=`<div class="ci">`;fc.forEach(c=>{const o=inL(c),x=c.replace(/'/g,"\\'");h+=`<span style="display:inline-flex;align-items:center;gap:2px"><button class="cp ${o?"on":""}" onclick="tgL('${x}')">${o?"✓":"+"} ${c}</button><button class="cdl" onclick="rCu('${x}')">✕</button></span>`});h+=`</div>`}h+=`<div class="row" style="padding:6px 10px 10px"><input class="inp" id="ciI" placeholder="Adicionar..." onkeydown="if(event.key==='Enter')aCu()"><button class="ba" onclick="aCu()">+</button></div></div>`}else{if(!lista.length)h+=`<div class="empty">Lista vazia!</div>`;else{const ck=lista.filter(i=>i.checked).length;h+=`<div class="pi">${ck}/${lista.length}<div class="pbg"><div class="pf" style="width:${(ck/lista.length)*100}%;background:linear-gradient(90deg,#3b82f6,#60a5fa)"></div></div></div><div class="its">`;lista.forEach(i=>{h+=`<div class="ir" style="opacity:${i.checked?.45:1}"><button class="ck" onclick="tCk('${i.id}')">${i.checked?"☑":"☐"}</button><span class="nm" style="text-decoration:${i.checked?"line-through":"none"}">${i.name}</span><button class="xb" onclick="tgL('${i.name.replace(/'/g,"\\'")}')">✕</button></div>`});h+=`</div>`;if(ck)h+=`<button class="clr" onclick="cCk()">Limpar ${ck}</button>`}}e.innerHTML=h}
 function aCu(){const i=document.getElementById("ciI");if(!i||!i.value.trim())return;const n=i.value.trim();if(!D.mercado.custom)D.mercado.custom=[];if(!D.mercado.custom.some(c=>c.toLowerCase()===n.toLowerCase())){D.mercado.custom.push(n);D.mercado.lista.push({id:gid(),name:n,checked:false});sv();render()}}
 function rCu(n){D.mercado.custom=(D.mercado.custom||[]).filter(c=>c!==n);D.mercado.lista=D.mercado.lista.filter(i=>i.name.toLowerCase()!==n.toLowerCase());sv();render()}
 function tCk(id){D.mercado.lista=D.mercado.lista.map(i=>i.id===id?{...i,checked:!i.checked}:i);sv();render()}
 function cCk(){D.mercado.lista=D.mercado.lista.filter(i=>!i.checked);sv();render()}
-
-// ══════════ FINANÇAS ══════════
+// ══ FINANÇAS ══
 let fM=CMK;
 function rF(){const e=document.getElementById("pg_financas");if(!D.financas)D.financas={};const md=D.financas[fM]||{};let h="";h+=`<div class="mos">`;mO().forEach(m=>{h+=`<button class="mb ${fM===m.key?"on":""}" onclick="fM='${m.key}';render()">${m.label}</button>`});h+=`</div>`;const pc=BLS.filter(b=>md[b.id+"_p"]).length;h+=`<div class="pi">${pc}/${BLS.length} pagos<div class="pbg"><div class="pf" style="width:${(pc/BLS.length)*100}%;background:#22c55e"></div></div></div><div class="bg">`;let tot=0;BLS.forEach(b=>{const v=md[b.id]||"",p=md[b.id+"_p"];tot+=parseFloat(v)||0;h+=`<div class="bc ${p?"pd":""}"><div class="bt"><span class="ico">${b.icon}</span><span class="lb">${b.label}</span></div><div class="mw"><span class="sy">R$</span><input type="number" class="inp inp-m" placeholder="0,00" value="${v}" onchange="sF('${b.id}',this.value)"></div><button class="pb" style="background:${p?"#22c55e":"rgba(100,116,139,.3)"}" onclick="tFP('${b.id}')">${p?"✓ Pago":"Pagar"}</button></div>`});h+=`</div><div class="tbar"><span class="l">TOTAL</span><span class="v">R$${tot.toFixed(2)}</span></div>`;e.innerHTML=h}
 function sF(id,v){if(!D.financas[fM])D.financas[fM]={};D.financas[fM][id]=v;sv();render()}
 function tFP(id){if(!D.financas[fM])D.financas[fM]={};D.financas[fM][id+"_p"]=!D.financas[fM][id+"_p"];sv();render()}
-
-// ══════════ VIAGEM ══════════
+// ══ VIAGEM ══
 let vMo=CMK,vCa="passagens";
 function gV(m,c){return(D.viagem[m]&&D.viagem[m][c])||[]}
 function rV(){const e=document.getElementById("pg_viagem");if(!D.viagem)D.viagem={};let h="",gt=0;Object.values(D.viagem).forEach(d=>{if(typeof d==="object")VCS.forEach(c=>{(d[c.id]||[]).forEach(i=>gt+=i.valor||0)})});h+=`<div class="sph"><span style="font-size:22px">✈️</span><div><h2>São Paulo</h2></div><div class="spt">R$${gt.toFixed(2)}</div></div><div class="mos">`;mO().forEach(m=>{h+=`<button class="mb ${vMo===m.key?"on":""}" onclick="vMo='${m.key}';render()">${m.label}</button>`});h+=`</div><div class="trow">`;VCS.forEach(c=>{const t=gV(vMo,c.id).reduce((s,i)=>s+(i.valor||0),0);h+=`<button class="tb ${vCa===c.id?"on":""}" onclick="vCa='${c.id}';render()">${c.icon} ${c.label} <span style="opacity:.5;font-size:10px">R$${t.toFixed(0)}</span></button>`});h+=`</div><div class="row"><input class="inp" id="vD" placeholder="Descrição..." style="flex:2" onkeydown="if(event.key==='Enter')aV()"><div class="mw"><span class="sy">R$</span><input type="number" class="inp inp-m" id="vV" placeholder="0" onkeydown="if(event.key==='Enter')aV()"></div><button class="ba" onclick="aV()">+</button></div>`;const it=gV(vMo,vCa);if(!it.length)h+=`<div class="empty">Nenhum gasto</div>`;else{h+=`<div class="its">`;it.forEach(i=>{h+=`<div class="ir"><span class="nm">${i.desc}<span class="dt">${i.date||""}</span></span><span class="vl" style="color:#f59e0b">R$${(i.valor||0).toFixed(2)}</span><button class="xb" onclick="dV('${i.id}')">✕</button></div>`});h+=`</div><div class="tbar"><span class="l">TOTAL</span><span class="v">R$${it.reduce((s,i)=>s+(i.valor||0),0).toFixed(2)}</span></div>`}e.innerHTML=h}
 function aV(){const d=document.getElementById("vD").value.trim(),v=parseFloat(document.getElementById("vV").value)||0;if(!d)return;if(!D.viagem[vMo])D.viagem[vMo]={};if(!D.viagem[vMo][vCa])D.viagem[vMo][vCa]=[];D.viagem[vMo][vCa].push({id:gid(),desc:d,valor:v,date:new Date().toLocaleDateString("pt-BR")});sv();render()}
 function dV(id){if(D.viagem[vMo]&&D.viagem[vMo][vCa]){D.viagem[vMo][vCa]=D.viagem[vMo][vCa].filter(i=>i.id!==id);sv();render()}}
-
-// ══════════ CARTÃO ══════════
+// ══ CARTÃO ══
 let cMo=CMK,sCF=false;
 function gCM(k){if(!Array.isArray(D.cartao))return[];return D.cartao.map(i=>{const p=mI(k)-mI(i.startMonth)+1;if(p<1||p>i.parcelas)return null;return{...i,pa:p}}).filter(Boolean)}
 function rC(){const e=document.getElementById("pg_cartao");if(!Array.isArray(D.cartao))D.cartao=[];const mi=gCM(cMo);let h="";const tM=mi.reduce((s,i)=>s+i.valorParcela,0),tG=D.cartao.reduce((s,i)=>s+i.parcelas*i.valorParcela,0),at=D.cartao.filter(i=>{const p=mI(CMK)-mI(i.startMonth)+1;return p>=1&&p<=i.parcelas}).length;h+=`<div class="cs"><div class="cst"><span class="l">FATURA</span><span class="v" style="color:#f59e0b">R$${tM.toFixed(0)}</span></div><div class="cst"><span class="l">TOTAL</span><span class="v" style="color:#ef4444">R$${tG.toFixed(0)}</span></div><div class="cst"><span class="l">ATIVAS</span><span class="v" style="color:#3b82f6">${at}</span></div></div><div class="mos">`;mO(6).forEach(m=>{const t=gCM(m.key).reduce((s,i)=>s+i.valorParcela,0);h+=`<button class="mb ${cMo===m.key?"on":""}" onclick="cMo='${m.key}';render()">${m.label}${t?" •R$"+t.toFixed(0):""}</button>`});h+=`</div><button class="nbt" onclick="sCF=!sCF;render()">${sCF?"✕ Cancelar":"+ Nova Compra"}</button>`;if(sCF){const ml=mO(6).find(m=>m.key===cMo)?.label||cMo;h+=`<div class="fc"><input class="inp" id="cD" placeholder="Descrição"><div class="row"><div class="mw"><span class="sy">R$</span><input type="number" class="inp inp-m" id="cT" placeholder="Total"></div><input type="number" class="inp" id="cP" placeholder="Parcelas" style="max-width:80px"></div><div style="font-size:11px;color:#475569">1ª parcela: <b>${ml}</b></div><button class="ba" style="width:100%;border-radius:8px" onclick="aC()">Adicionar</button></div>`}if(!mi.length)h+=`<div class="empty">Nenhuma parcela</div>`;else{h+=`<div class="its">`;mi.forEach(i=>{const pr=(i.pa/i.parcelas)*100,il=i.pa===i.parcelas;h+=`<div class="pc"><div style="display:flex;justify-content:space-between"><span style="font-weight:600;font-size:13px">${i.desc}</span><button class="xb" onclick="dC('${i.id}')">✕</button></div><div style="display:flex;justify-content:space-between;margin-top:4px;font-size:12px"><span style="opacity:.6">R$${i.valorParcela.toFixed(2)}/mês</span><span style="color:#64748b">Total R$${i.total.toFixed(2)}</span></div><div class="ppb"><div class="ppf" style="width:${pr}%"></div></div><div style="text-align:center;margin-top:4px"><span style="font-size:12px;font-weight:600;color:${il?"#22c55e":"#e2e8f0"}">${i.pa}/${i.parcelas}${il?" ★":""}</span></div></div>`});h+=`</div>`}e.innerHTML=h}
 function aC(){const d=document.getElementById("cD").value.trim(),t=parseFloat(document.getElementById("cT").value),p=parseInt(document.getElementById("cP").value)||1;if(!d||!t)return;D.cartao.push({id:gid(),desc:d,total:t,parcelas:p,valorParcela:t/p,startMonth:cMo,date:new Date().toLocaleDateString("pt-BR")});sCF=false;sv();render()}
 function dC(id){D.cartao=D.cartao.filter(i=>i.id!==id);sv();render()}
-
-// ══════════ EMPRÉSTIMOS ══════════
+// ══ EMPRÉSTIMOS ══
 let eMo=CMK,sEF=false;
 function gEM(k){if(!Array.isArray(D.emprestimos))return[];return D.emprestimos.map(i=>{const p=mI(k)-mI(i.startMonth)+1;if(p<1||p>i.parcelas)return null;return{...i,pa:p}}).filter(Boolean)}
 function rE(){const e=document.getElementById("pg_emprestimos");if(!Array.isArray(D.emprestimos))D.emprestimos=[];const mi=gEM(eMo);let h="";const tM=mi.reduce((s,i)=>s+i.valorParcela,0),tG=D.emprestimos.reduce((s,i)=>s+i.parcelas*i.valorParcela,0);h+=`<div class="sph"><span style="font-size:22px">🏦</span><div><h2>Empréstimos</h2></div><div class="spt">R$${tM.toFixed(2)}</div></div><div class="cs"><div class="cst"><span class="l">MÊS</span><span class="v" style="color:#f59e0b">R$${tM.toFixed(0)}</span></div><div class="cst"><span class="l">TOTAL</span><span class="v" style="color:#ef4444">R$${tG.toFixed(0)}</span></div></div><div class="mos">`;mO(6).forEach(m=>{const t=gEM(m.key).reduce((s,i)=>s+i.valorParcela,0);h+=`<button class="mb ${eMo===m.key?"on":""}" onclick="eMo='${m.key}';render()">${m.label}${t?" •R$"+t.toFixed(0):""}</button>`});h+=`</div><button class="nbt" onclick="sEF=!sEF;render()">${sEF?"✕ Cancelar":"+ Novo Empréstimo"}</button>`;if(sEF){h+=`<div class="fc"><input class="inp" id="eD" placeholder="Nome"><div class="row"><div class="mw"><span class="sy">R$</span><input type="number" class="inp inp-m" id="eT" placeholder="Total"></div><input type="number" class="inp" id="eP" placeholder="Parcelas" style="max-width:80px"></div><button class="ba" style="width:100%;border-radius:8px" onclick="aE()">Adicionar</button></div>`}if(!mi.length)h+=`<div class="empty">Nenhuma parcela</div>`;else{h+=`<div class="its">`;mi.forEach(i=>{const pr=(i.pa/i.parcelas)*100,il=i.pa===i.parcelas;h+=`<div class="pc"><div style="display:flex;justify-content:space-between"><span style="font-weight:600;font-size:13px">${i.desc}</span><button class="xb" onclick="dE('${i.id}')">✕</button></div><div style="display:flex;justify-content:space-between;margin-top:4px;font-size:12px"><span style="opacity:.6">R$${i.valorParcela.toFixed(2)}/mês</span><span style="color:#64748b">Total R$${i.total.toFixed(2)}</span></div><div class="ppb"><div class="ppf" style="width:${pr}%"></div></div><div style="text-align:center;margin-top:4px"><span style="font-size:12px;font-weight:600;color:${il?"#22c55e":"#e2e8f0"}">${i.pa}/${i.parcelas}${il?" ★":""}</span></div></div>`});h+=`</div>`}e.innerHTML=h}
 function aE(){const d=document.getElementById("eD").value.trim(),t=parseFloat(document.getElementById("eT").value),p=parseInt(document.getElementById("eP").value)||1;if(!d||!t)return;D.emprestimos.push({id:gid(),desc:d,total:t,parcelas:p,valorParcela:t/p,startMonth:eMo,date:new Date().toLocaleDateString("pt-BR")});sEF=false;sv();render()}
 function dE(id){D.emprestimos=D.emprestimos.filter(i=>i.id!==id);sv();render()}
-
-// ══════════ ARESTA ══════════
+// ══ ARESTA ══
 let aMo=CMK;
 function rA(){const e=document.getElementById("pg_aresta");if(!D.aresta)D.aresta={};const md=D.aresta[aMo]||{items:[]},items=md.items||[];let h="";h+=`<div class="sph"><span style="font-size:22px">🏢</span><div><h2>Aresta</h2><p>Investimentos</p></div><div class="spt">R$${items.reduce((s,i)=>s+(i.valor||0),0).toFixed(2)}</div></div><div class="mos">`;mO().forEach(m=>{h+=`<button class="mb ${aMo===m.key?"on":""}" onclick="aMo='${m.key}';render()">${m.label}</button>`});h+=`</div><div class="row"><input class="inp" id="aD" placeholder="Descrição..." style="flex:2" onkeydown="if(event.key==='Enter')aA()"><div class="mw"><span class="sy">R$</span><input type="number" class="inp inp-m" id="aV" placeholder="0" onkeydown="if(event.key==='Enter')aA()"></div><button class="ba" onclick="aA()">+</button></div>`;if(!items.length)h+=`<div class="empty">Nenhum investimento</div>`;else{h+=`<div class="its">`;items.forEach(i=>{h+=`<div class="ir"><span class="nm">${i.desc}<span class="dt">${i.date||""}</span></span><span class="vl" style="color:#f59e0b">R$${(i.valor||0).toFixed(2)}</span><button class="xb" onclick="dA('${i.id}')">✕</button></div>`});h+=`</div><div class="tbar"><span class="l">TOTAL</span><span class="v">R$${items.reduce((s,i)=>s+(i.valor||0),0).toFixed(2)}</span></div>`}e.innerHTML=h}
 function aA(){const d=document.getElementById("aD").value.trim(),v=parseFloat(document.getElementById("aV").value)||0;if(!d)return;if(!D.aresta[aMo])D.aresta[aMo]={items:[]};if(!D.aresta[aMo].items)D.aresta[aMo].items=[];D.aresta[aMo].items.push({id:gid(),desc:d,valor:v,date:new Date().toLocaleDateString("pt-BR")});sv();render()}
 function dA(id){if(D.aresta[aMo]&&D.aresta[aMo].items){D.aresta[aMo].items=D.aresta[aMo].items.filter(i=>i.id!==id);sv();render()}}
-
-// ══════════ PIX ══════════
+// ══ PIX ══
 let pMo=CMK,pFil="todos";
-function rP(){const e=document.getElementById("pg_pix");if(!D.pix)D.pix={};const md=D.pix[pMo]||{items:[]},items=md.items||[];let h="";const receb=items.filter(i=>i.valor>0),env=items.filter(i=>i.valor<0);const tIn=receb.reduce((s,i)=>s+i.valor,0),tOut=env.reduce((s,i)=>s+Math.abs(i.valor),0);h+=`<div class="sph"><span style="font-size:22px">📲</span><div><h2>PIX</h2></div></div><div class="cs"><div class="cst"><span class="l">RECEBIDOS</span><span class="v" style="color:#4ade80">R$${tIn.toFixed(0)}</span></div><div class="cst"><span class="l">ENVIADOS</span><span class="v" style="color:#f87171">R$${tOut.toFixed(0)}</span></div><div class="cst"><span class="l">SALDO</span><span class="v" style="color:${tIn-tOut>=0?"#4ade80":"#f87171"}">R$${(tIn-tOut).toFixed(0)}</span></div></div><div class="mos">`;mO().forEach(m=>{h+=`<button class="mb ${pMo===m.key?"on":""}" onclick="pMo='${m.key}';render()">${m.label}</button>`});h+=`</div><div class="trow"><button class="tb ${pFil==="todos"?"on":""}" onclick="pFil='todos';render()">Todos (${items.length})</button><button class="tb ${pFil==="in"?"on":""}" onclick="pFil='in';render()">Receb. (${receb.length})</button><button class="tb ${pFil==="out"?"on":""}" onclick="pFil='out';render()">Env. (${env.length})</button></div><div class="row"><input class="inp" id="pD" placeholder="Descrição..." style="flex:2" onkeydown="if(event.key==='Enter')aP()"><div class="mw"><span class="sy">R$</span><input type="number" class="inp inp-m" id="pV" placeholder="0 (- envio)" onkeydown="if(event.key==='Enter')aP()"></div><button class="ba" onclick="aP()">+</button></div>`;let fil=items;if(pFil==="in")fil=receb;if(pFil==="out")fil=env;if(!fil.length)h+=`<div class="empty">Nenhum PIX</div>`;else{h+=`<div class="its">`;fil.forEach(i=>{const isIn=i.valor>0;h+=`<div class="ir"><span class="tag ${isIn?"tag-in":"tag-out"}">${isIn?"↓":"↑"}</span><span class="nm">${i.desc}<span class="dt">${i.date||""}</span></span><span class="vl" style="color:${isIn?"#4ade80":"#f87171"}">${isIn?"+":""}R$${Math.abs(i.valor).toFixed(2)}</span><button class="xb" onclick="dP('${i.id}')">✕</button></div>`});h+=`</div>`}e.innerHTML=h}
+function rP(){const e=document.getElementById("pg_pix");if(!D.pix)D.pix={};const md=D.pix[pMo]||{items:[]},items=md.items||[];let h="";const receb=items.filter(i=>i.valor>0),env=items.filter(i=>i.valor<0);const tIn=receb.reduce((s,i)=>s+i.valor,0),tOut=env.reduce((s,i)=>s+Math.abs(i.valor),0);h+=`<div class="sph"><span style="font-size:22px">📲</span><div><h2>PIX</h2></div></div><div class="cs"><div class="cst"><span class="l">RECEB.</span><span class="v" style="color:#4ade80">R$${tIn.toFixed(0)}</span></div><div class="cst"><span class="l">ENV.</span><span class="v" style="color:#f87171">R$${tOut.toFixed(0)}</span></div><div class="cst"><span class="l">SALDO</span><span class="v" style="color:${tIn-tOut>=0?"#4ade80":"#f87171"}">R$${(tIn-tOut).toFixed(0)}</span></div></div><div class="mos">`;mO().forEach(m=>{h+=`<button class="mb ${pMo===m.key?"on":""}" onclick="pMo='${m.key}';render()">${m.label}</button>`});h+=`</div><div class="trow"><button class="tb ${pFil==="todos"?"on":""}" onclick="pFil='todos';render()">Todos (${items.length})</button><button class="tb ${pFil==="in"?"on":""}" onclick="pFil='in';render()">Receb. (${receb.length})</button><button class="tb ${pFil==="out"?"on":""}" onclick="pFil='out';render()">Env. (${env.length})</button></div><div class="row"><input class="inp" id="pD" placeholder="Descrição..." style="flex:2" onkeydown="if(event.key==='Enter')aP()"><div class="mw"><span class="sy">R$</span><input type="number" class="inp inp-m" id="pV" placeholder="0 (- envio)" onkeydown="if(event.key==='Enter')aP()"></div><button class="ba" onclick="aP()">+</button></div>`;let fil=items;if(pFil==="in")fil=receb;if(pFil==="out")fil=env;if(!fil.length)h+=`<div class="empty">Nenhum PIX</div>`;else{h+=`<div class="its">`;fil.forEach(i=>{const isIn=i.valor>0;h+=`<div class="ir"><span class="tag ${isIn?"tag-in":"tag-out"}">${isIn?"↓":"↑"}</span><span class="nm">${i.desc}<span class="dt">${i.date||""}</span></span><span class="vl" style="color:${isIn?"#4ade80":"#f87171"}">${isIn?"+":""}R$${Math.abs(i.valor).toFixed(2)}</span><button class="xb" onclick="dP('${i.id}')">✕</button></div>`});h+=`</div>`}e.innerHTML=h}
 function aP(){const d=document.getElementById("pD").value.trim(),v=parseFloat(document.getElementById("pV").value);if(!d||isNaN(v))return;if(!D.pix[pMo])D.pix[pMo]={items:[]};if(!D.pix[pMo].items)D.pix[pMo].items=[];D.pix[pMo].items.push({id:gid(),desc:d,valor:v,date:new Date().toLocaleDateString("pt-BR"),manual:true});sv();render()}
 function dP(id){if(D.pix[pMo]&&D.pix[pMo].items){D.pix[pMo].items=D.pix[pMo].items.filter(i=>i.id!==id);sv();render()}}
-
-// ══════════ EXTRATO ══════════
+// ══ EXTRATO - NEW ROBUST PARSER ══
 let extStatus="",extParsed=[];
-function rEx(){const e=document.getElementById("pg_extrato");let h="";h+=`<div class="sph"><span style="font-size:22px">📄</span><div><h2>Importar Extrato</h2><p>Upload do PDF</p></div></div><div class="upload-area" onclick="document.getElementById('pdfInput').click()" ondragover="event.preventDefault()" ondrop="event.preventDefault();handlePDF(event.dataTransfer.files[0])"><div class="big">📎</div><b>Toque aqui ou arraste o PDF</b><br><span style="font-size:12px">Extrato Itaú, Nubank, Inter...</span><input type="file" id="pdfInput" accept=".pdf" onchange="handlePDF(this.files[0])"></div>`;if(extStatus)h+=`<div class="upload-status" style="background:rgba(96,165,250,.1);color:#60a5fa">${extStatus}</div>`;if(extParsed.length){h+=`<div class="cd"><div style="font-size:12px;opacity:.6;margin-bottom:8px">📊 ${extParsed.length} LANÇAMENTOS</div><div class="cs" style="margin-bottom:8px"><div class="cst"><span class="l">PIX</span><span class="v" style="color:#a78bfa">${extParsed.filter(i=>i.cat==="pix").length}</span></div><div class="cst"><span class="l">PAG</span><span class="v" style="color:#f59e0b">${extParsed.filter(i=>i.cat==="pagamento").length}</span></div><div class="cst"><span class="l">SAL</span><span class="v" style="color:#60a5fa">${extParsed.filter(i=>i.cat==="salario").length}</span></div></div><button class="ba" style="width:100%;border-radius:10px;font-size:14px;padding:12px" onclick="importExtrato()">✅ Importar para as abas</button><div style="margin-top:8px;max-height:250px;overflow-y:auto"><div class="its">`;extParsed.forEach(i=>{const isIn=i.valor>0;let tc="tag-pay";if(i.cat==="pix")tc=isIn?"tag-in":"tag-out";if(i.cat==="salario")tc="tag-sal";h+=`<div class="ir"><span class="tag ${tc}">${i.cat==="pix"?"PIX":i.cat==="salario"?"SAL":"PAG"}</span><span class="nm">${i.desc}<span class="dt">${i.date}</span></span><span class="vl" style="color:${isIn?"#4ade80":"#f87171"}">${isIn?"+":""}R$${Math.abs(i.valor).toFixed(2)}</span></div>`});h+=`</div></div></div>`}const hist=(D.extrato&&D.extrato.historico)||[];if(hist.length){h+=`<div class="cd"><div style="font-size:12px;opacity:.6;margin-bottom:6px">📋 HISTÓRICO</div>`;hist.slice(-5).reverse().forEach(i=>{h+=`<div class="rd"><span>${i.label}</span><span>${i.count} itens</span></div>`});h+=`</div>`}e.innerHTML=h}
-async function handlePDF(file){if(!file)return;extStatus="⏳ Lendo...";extParsed=[];render();try{const buf=await file.arrayBuffer();const pdf=await pdfjsLib.getDocument({data:buf}).promise;let txt="";for(let i=1;i<=pdf.numPages;i++){const pg=await pdf.getPage(i);const tc=await pg.getTextContent();txt+=tc.items.map(x=>x.str).join(" ")+"\n"}extParsed=parseExtrato(txt);extStatus=`✅ ${extParsed.length} lançamentos!`;render()}catch(err){extStatus="❌ Erro: "+err.message;render()}}
-function parseExtrato(txt){const items=[];const ft=txt.replace(/\n/g," ");const re=/(\d{2}\/\d{2}\/\d{4})\s+((?:PIX|PAY|RSHOP|RSCSS|SISPAG|CREDIARIO|REMUNERACAO|FATURA|SEGURO|ON SMART|SAQUE|PAG BOL|TBI|REND PAGO|DEV PIX|ITAU SEG)[^\d-]*?)\s*(-?[\d.]+,\d{2})/g;let m;while(m=re.exec(ft)){const date=m[1];let desc=m[2].trim();let valor=parseFloat(m[3].replace(/\./g,"").replace(",","."));if(desc.includes("SALDO DO DIA"))continue;let cat="outros";if(/PIX|DEV PIX/.test(desc))cat="pix";else if(/REMUNERACAO|SALARIO|SISPAG/.test(desc))cat="salario";else if(/PAY |RSHOP|RSCSS|ON SMART|SAQUE|PAG BOL/.test(desc))cat="pagamento";desc=desc.replace(/\d{2}\/\d{2}\s*$/,"").trim();items.push({id:gid(),date,desc,valor,cat})}const seen=new Set();return items.filter(i=>{const k=i.date+i.desc+i.valor;if(seen.has(k))return false;seen.add(k);return true})}
-function importExtrato(){if(!extParsed.length)return;const fd=extParsed[0]?.date;let moKey=CMK;if(fd){const[d,m,y]=fd.split("/").map(Number);moKey=mk(y,m-1)}const pixI=extParsed.filter(i=>i.cat==="pix");if(pixI.length){if(!D.pix[moKey])D.pix[moKey]={items:[]};if(!D.pix[moKey].items)D.pix[moKey].items=[];const ex=new Set(D.pix[moKey].items.map(i=>i.desc+i.valor));pixI.forEach(i=>{const k=i.desc+i.valor;if(!ex.has(k)){D.pix[moKey].items.push({id:gid(),desc:i.desc,valor:i.valor,date:i.date,imported:true});ex.add(k)}})}if(!D.extrato)D.extrato={};if(!D.extrato.historico)D.extrato.historico=[];D.extrato.historico.push({label:new Date().toLocaleDateString("pt-BR")+" - "+moKey,count:extParsed.length,date:new Date().toISOString()});if(!D.extrato.dados)D.extrato.dados={};D.extrato.dados[moKey]=extParsed;sv();extStatus="✅ Importado! Confira na aba PIX.";extParsed=[];render()}
+function rEx(){const e=document.getElementById("pg_extrato");let h="";h+=`<div class="sph"><span style="font-size:22px">📄</span><div><h2>Importar Extrato</h2><p>Upload do PDF</p></div></div><div class="upload-area" onclick="document.getElementById('pdfInput').click()" ondragover="event.preventDefault()" ondrop="event.preventDefault();handlePDF(event.dataTransfer.files[0])"><div class="big">📎</div><b>Toque aqui ou arraste o PDF</b><br><span style="font-size:12px">Extrato Itaú, Nubank, Inter...</span><input type="file" id="pdfInput" accept=".pdf" onchange="handlePDF(this.files[0])"></div>`;if(extStatus)h+=`<div class="upload-status" style="background:rgba(96,165,250,.1);color:#60a5fa">${extStatus}</div>`;if(extParsed.length){const pixC=extParsed.filter(i=>i.cat==="pix").length,payC=extParsed.filter(i=>i.cat==="pagamento").length,salC=extParsed.filter(i=>i.cat==="salario").length,outC=extParsed.filter(i=>i.cat==="outros").length;h+=`<div class="cd"><div style="font-size:12px;opacity:.6;margin-bottom:8px">📊 ${extParsed.length} LANÇAMENTOS</div><div class="cs" style="margin-bottom:8px"><div class="cst"><span class="l">PIX</span><span class="v" style="color:#a78bfa">${pixC}</span></div><div class="cst"><span class="l">PAG</span><span class="v" style="color:#f59e0b">${payC}</span></div><div class="cst"><span class="l">SAL</span><span class="v" style="color:#60a5fa">${salC}</span></div><div class="cst"><span class="l">OUTROS</span><span class="v" style="color:#64748b">${outC}</span></div></div><button class="ba" style="width:100%;border-radius:10px;font-size:14px;padding:12px" onclick="importExtrato()">✅ Importar ${extParsed.length} lançamentos</button><div style="margin-top:8px;max-height:300px;overflow-y:auto"><div class="its">`;extParsed.forEach(i=>{const isIn=i.valor>0;let tc="tag-pay";if(i.cat==="pix")tc=isIn?"tag-in":"tag-out";if(i.cat==="salario")tc="tag-sal";h+=`<div class="ir"><span class="tag ${tc}">${i.cat==="pix"?"PIX":i.cat==="salario"?"SAL":i.cat==="pagamento"?"PAG":"OUT"}</span><span class="nm">${i.desc}<span class="dt">${i.date}</span></span><span class="vl" style="color:${isIn?"#4ade80":"#f87171"}">${isIn?"+":""}R$${Math.abs(i.valor).toFixed(2)}</span></div>`});h+=`</div></div></div>`}const hist=(D.extrato&&D.extrato.historico)||[];if(hist.length){h+=`<div class="cd"><div style="font-size:12px;opacity:.6;margin-bottom:6px">📋 HISTÓRICO</div>`;hist.slice(-5).reverse().forEach(i=>{h+=`<div class="rd"><span>${i.label}</span><span>${i.count} itens</span></div>`});h+=`</div>`}e.innerHTML=h}
 
-// ══════════ RECEITA ══════════
+async function handlePDF(file){
+  if(!file)return;extStatus="⏳ Lendo PDF...";extParsed=[];render();
+  try{
+    const buf=await file.arrayBuffer();
+    const pdf=await pdfjsLib.getDocument({data:buf}).promise;
+    let allText="";
+    for(let i=1;i<=pdf.numPages;i++){
+      const pg=await pdf.getPage(i);
+      const tc=await pg.getTextContent();
+      // Get items with positions to reconstruct lines
+      const items=tc.items;
+      // Group by Y position to form lines
+      const lines={};
+      items.forEach(it=>{
+        const y=Math.round(it.transform[5]);// Y position
+        if(!lines[y])lines[y]=[];
+        lines[y].push({x:it.transform[4],text:it.str});
+      });
+      // Sort lines top to bottom, items left to right
+      const sortedYs=Object.keys(lines).sort((a,b)=>b-a);
+      sortedYs.forEach(y=>{
+        const ln=lines[y].sort((a,b)=>a.x-b.x);
+        const text=ln.map(i=>i.text).join(" ");
+        allText+=text+"\n";
+      });
+    }
+    extParsed=parseExtrato(allText);
+    extStatus=`✅ ${extParsed.length} lançamentos encontrados!`;
+    render();
+  }catch(err){extStatus="❌ Erro: "+err.message;render()}
+}
+
+function parseExtrato(txt){
+  const items=[];
+  const lines=txt.split("\n");
+  for(const raw of lines){
+    const line=raw.trim();
+    if(!line)continue;
+    // Match: DD/MM/YYYY + anything + value in Brazilian format (last occurrence)
+    const dateMatch=line.match(/^(\d{2}\/\d{2}\/\d{4})\s+(.+)/);
+    if(!dateMatch)continue;
+    const date=dateMatch[1];
+    const rest=dateMatch[2];
+    if(rest.includes("SALDO DO DIA"))continue;
+    // Find the last Brazilian-format number: -1.234,56 or 1.234,56 or -8,00
+    const valMatches=[...rest.matchAll(/(-?[\d.]+,\d{2})(?:\s|$)/g)];
+    if(!valMatches.length)continue;
+    const lastVal=valMatches[valMatches.length-1];
+    const valStr=lastVal[1];
+    const desc=rest.substring(0,lastVal.index).trim();
+    if(!desc)continue;
+    // Skip header-like lines
+    if(desc.includes("período")||desc.includes("emitido")||desc.includes("valor (R$)"))continue;
+    const valor=parseFloat(valStr.replace(/\./g,"").replace(",","."));
+    if(isNaN(valor))continue;
+    // Categorize
+    let cat="outros";
+    if(/PIX|DEV PIX/i.test(desc))cat="pix";
+    else if(/REMUNERACAO|SALARIO|SISPAG/i.test(desc))cat="salario";
+    else if(/PAY |RSHOP|RSCSS|ON SMART|SAQUE|PAG BOL/i.test(desc))cat="pagamento";
+    else if(/CREDIARIO|FATURA|SEGURO|ITAU SEG|TBI|REND PAGO/i.test(desc))cat="outros";
+    items.push({id:gid(),date,desc:desc.substring(0,60),valor,cat});
+  }
+  // Deduplicate
+  const seen=new Set();
+  return items.filter(i=>{const k=i.date+i.desc+i.valor;if(seen.has(k))return false;seen.add(k);return true});
+}
+
+function importExtrato(){
+  if(!extParsed.length)return;
+  const fd=extParsed[0]?.date;let moKey=CMK;
+  if(fd){const[d,m,y]=fd.split("/").map(Number);moKey=mk(y,m-1)}
+  // Import PIX items
+  const pixI=extParsed.filter(i=>i.cat==="pix");
+  if(pixI.length){
+    if(!D.pix[moKey])D.pix[moKey]={items:[]};
+    if(!D.pix[moKey].items)D.pix[moKey].items=[];
+    const ex=new Set(D.pix[moKey].items.map(i=>i.desc+i.valor));
+    pixI.forEach(i=>{const k=i.desc+i.valor;if(!ex.has(k)){D.pix[moKey].items.push({id:gid(),desc:i.desc,valor:i.valor,date:i.date,imported:true});ex.add(k)}});
+  }
+  // Save all parsed data for reference
+  if(!D.extrato)D.extrato={};
+  if(!D.extrato.historico)D.extrato.historico=[];
+  D.extrato.historico.push({label:new Date().toLocaleDateString("pt-BR")+" - "+moKey,count:extParsed.length,date:new Date().toISOString()});
+  if(!D.extrato.dados)D.extrato.dados={};
+  D.extrato.dados[moKey]=extParsed;
+  sv();extStatus="✅ Importado! "+pixI.length+" PIX na aba PIX.";extParsed=[];render();
+}
+// ══ RECEITA ══
 let rMo=CMK;
 function rR(){const e=document.getElementById("pg_receita");if(!D.receita)D.receita={};const md=D.receita[rMo]||{};let h="";h+=`<div class="mos">`;mO().forEach(m=>{h+=`<button class="mb ${rMo===m.key?"on":""}" onclick="rMo='${m.key}';render()">${m.label}</button>`});h+=`</div>`;const rec=md.receita||"";h+=`<div class="cd"><div style="font-size:12px;opacity:.6;margin-bottom:6px">💵 RECEITA</div><div class="mw"><span class="sy">R$</span><input type="number" class="inp inp-m" placeholder="Receita..." value="${rec}" onchange="sRv(this.value)" style="font-size:18px;font-weight:700"></div></div>`;const recVal=parseFloat(rec)||0;const{items:gastos,total:totalG}=getGastos(rMo);const saldo=recVal-totalG;h+=`<div class="rc ${saldo>=0?"pos":"neg"}"><div class="rl">SALDO</div><div class="rv" style="color:${saldo>=0?"#22c55e":"#ef4444"}">R$ ${saldo.toFixed(2)}</div></div><div class="cd"><div style="font-size:12px;opacity:.6;margin-bottom:8px">DETALHAMENTO</div><div class="rd"><span>💵 Receita</span><span style="color:#22c55e;font-weight:600">+R$${recVal.toFixed(2)}</span></div>`;Object.entries(gastos).forEach(([k,v])=>{h+=`<div class="rd"><span>${k}</span><span style="color:#ef4444;font-weight:600">-R$${v.toFixed(2)}</span></div>`});h+=`<div style="display:flex;justify-content:space-between;padding:8px 0;font-weight:700;font-size:14px"><span>Saldo</span><span style="color:${saldo>=0?"#22c55e":"#ef4444"}">R$${saldo.toFixed(2)}</span></div></div>`;h+=`<div class="cd"><div style="font-size:12px;opacity:.6;margin-bottom:6px">📝 OUTROS GASTOS</div><div class="row" style="margin-bottom:6px"><input class="inp" id="rED" placeholder="Descrição..." style="flex:2" onkeydown="if(event.key==='Enter')aRE()"><div class="mw"><span class="sy">R$</span><input type="number" class="inp inp-m" id="rEV" placeholder="0" onkeydown="if(event.key==='Enter')aRE()"></div><button class="ba" onclick="aRE()">+</button></div>`;const extras=md.extras||[];if(extras.length){h+=`<div class="its">`;extras.forEach(i=>{h+=`<div class="ir"><span class="nm">${i.desc}</span><span class="vl" style="color:#f59e0b">R$${(i.valor||0).toFixed(2)}</span><button class="xb" onclick="dRE('${i.id}')">✕</button></div>`});h+=`</div>`}h+=`</div>`;e.innerHTML=h}
 function sRv(v){if(!D.receita[rMo])D.receita[rMo]={};D.receita[rMo].receita=v;sv();render()}
 function aRE(){const d=document.getElementById("rED").value.trim(),v=parseFloat(document.getElementById("rEV").value)||0;if(!d)return;if(!D.receita[rMo])D.receita[rMo]={};if(!D.receita[rMo].extras)D.receita[rMo].extras=[];D.receita[rMo].extras.push({id:gid(),desc:d,valor:v});sv();render()}
 function dRE(id){if(D.receita[rMo]&&D.receita[rMo].extras){D.receita[rMo].extras=D.receita[rMo].extras.filter(i=>i.id!==id);sv();render()}}
-
-// ══════════ RENDER ══════════
+// ══ RENDER ══
 function render(){({dash:rDash,mercado:rM,financas:rF,viagem:rV,cartao:rC,emprestimos:rE,aresta:rA,pix:rP,extrato:rEx,receita:rR})[curTab]?.()}
 initFB();
 </script>
